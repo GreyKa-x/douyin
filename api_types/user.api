@@ -1,0 +1,28 @@
+syntax = "v1"
+
+import "api_types/common.api"
+type (
+    RegisterReq {
+        username string `json:"username"`
+        password string `json:"password"`
+    }
+    RegisterResp {
+        Status
+        token string `json:"token"`
+        userId int64 `json:"user_id"`
+    }
+    LoginReq {
+        RegisterReq
+    }
+    LoginResp {
+        RegisterResp
+    }
+    GetUserReq {
+        Token
+        userId string `json:"user_id"`
+    }
+    GetUserResp {
+        Status
+        user User `json:"user,optional"`
+    }
+)

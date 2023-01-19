@@ -1,0 +1,37 @@
+syntax = "v1"
+
+import "api_types/common.api"
+type(
+    FollowReq {
+        Token
+        toUserId string `form:"to_user_id"`
+        actionType string `form:"action_type"`
+    }
+    FollowResp {
+        Status
+    }
+    ListFollowReq {
+        Token
+        userId string `form:"user_id"`
+    }
+    ListFollowResp {
+        Status
+        userList []User `json:"user_list,optional"`
+    }
+    ListFollowerReq {
+        Token
+        userId string `form:"user_id"`
+    }
+    ListFollowerResp {
+        Status
+        userList []User `json:"user_list,optional"`
+    }
+    ListFriendReq {
+        Token
+        userId string `form:"user_id"`
+    }
+    ListFriendResp {
+        Status
+        userList []User `form:"user_list"`
+    }
+)

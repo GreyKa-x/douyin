@@ -1,0 +1,69 @@
+syntax = "v1"
+
+import "api_types/interaction.api"
+import "api_types/message.api"
+import "api_types/relation.api"
+import "api_types/video.api"
+import "api_types/user.api"
+
+@server(
+	group: user
+)
+service douyin {
+	@handler Register
+	post /user/register (RegisterReq) returns (RegisterResp)
+	@handler Login
+	post /user/login (LoginReq) returns (LoginResp)
+	@handler GetUser
+	get /user (GetUserReq) returns (GetUserResp)
+}
+
+@server(
+	group: video
+)
+service douyin {
+	@handler ListVideo
+	get /feed (ListVideoReq) returns (ListVideoResp)
+	@handler UploadVideo
+	post /publish/action (UploadVideoReq) returns (UploadVideoResp)
+	@handler ListVideoByUser
+	get /publish/list (ListVideoByUserReq) returns (ListVideoByUserResp)
+}
+
+@server(
+	group: interaction
+)
+service douyin {
+	@handler Favorite
+	post /favorite/action (FavoriteReq) returns (FavoriteResp)
+	@handler ListFavorite
+	get /favorite/list (ListFavoriteReq) returns (ListFavoriteResp)
+	@handler Comment
+	post /comment/action (CommentReq) returns (CommentResp)
+	@handler ListComment
+	get /comment/list (ListCommentReq) returns (ListCommentResp)
+}
+
+@server(
+	group: relation
+)
+service douyin {
+	@handler Follow
+	post /relation/action (FollowReq) returns (FollowResp)
+	@handler ListFollow
+	get /relation/follow/list (ListFollowReq) returns (ListFollowResp)
+	@handler ListFollower
+	get /relation/follower/list (ListFollowerReq) returns (ListFollowerResp)
+	@handler ListFriend
+	get /relation/friend/list (ListFriendReq) returns (ListFriendResp)
+}
+
+@server(
+	group: message
+)
+service douyin {
+	@handler SendMessage
+	post /message/action (SendMessageReq) returns (SendMessageResp)
+	@handler ListMessage
+	get /message/chat (ListMessageReq) returns (SendMessageResp)
+}

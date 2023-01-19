@@ -1,0 +1,30 @@
+syntax = "v1"
+
+import "api_types/common.api"
+type(
+    ListVideoReq {
+        Token
+        latestTime string `form:"latest_time"`
+    }
+    ListVideoResp {
+        Status
+        nextTime int64 `json:"next_time,optional"`
+        videoList []Video `json:"video_list,optional"`
+    }
+    UploadVideoReq {
+        Token
+        data []byte `form:"data"`
+        title string `form:"title"`
+    }
+    UploadVideoResp {
+        Status
+    }
+    ListVideoByUserReq {
+        Token
+        userId string `form:"user_id"`
+    }
+    ListVideoByUserResp {
+        Status
+        videoList []Video `json:"video_list,optional"`
+    }
+)

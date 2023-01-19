@@ -1,0 +1,40 @@
+syntax = "v1"
+
+import "api_types/common.api"
+type (
+    FavoriteReq {
+        Token
+        videoId string `form:"video_id"`
+        actionType string `form:"action_type"`
+    }
+    FavoriteResp {
+        Status
+    }
+    ListFavoriteReq {
+        Token
+        userId string `form:"user_id"`
+    }
+    ListFavoriteResp {
+        Status
+        videoList []Video `json:"video_list,optional"`
+    }
+    CommentReq {
+        Token
+        videoId string `form:"video_id"`
+        actionType string `form:"action_type"`
+        commentText string `form:"comment_text"`
+        comment_id string `form:"comment_id"`
+    }
+    CommentResp {
+        Status
+        comment Comment `json:"comment"`
+    }
+    ListCommentReq {
+        Token
+        videoId string `form:"video_id"`
+    }
+    ListCommentResp {
+        Status
+        commentList []Comment `json:"commentList,optional"`
+    }
+)

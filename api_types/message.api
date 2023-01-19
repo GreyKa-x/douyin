@@ -1,0 +1,23 @@
+syntax = "v1"
+
+import "api_types/common.api"
+
+type(
+    SendMessageReq {
+        Token
+        toUserId string `form:"to_user_id"`
+        actionType string `form:"action_type"`
+        content string `form:"content"`
+    }
+    SendMessageResp {
+        Status
+    }
+    ListMessageReq {
+        Token
+        toUserId string `form:"to_user_id"`
+    }
+    ListMessageResp {
+        Status
+        messageList []Message `json:"message_list,optional"`
+    }
+)
