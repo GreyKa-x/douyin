@@ -19,7 +19,7 @@ type (
     }
     GetUserReq {
         Token
-        userId string `json:"user_id"`
+        userId int64 `json:"user_id"`
     }
     GetUserResp {
         Status

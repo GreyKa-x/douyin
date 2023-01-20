@@ -4,15 +4,15 @@ import "api_types/common.api"
 type(
     FollowReq {
         Token
-        toUserId string `form:"to_user_id"`
-        actionType string `form:"action_type"`
+        toUserId int64 `form:"to_user_id"`
+        actionType int32 `form:"action_type"`
     }
     FollowResp {
         Status
     }
     ListFollowReq {
         Token
-        userId string `form:"user_id"`
+        userId int64 `form:"user_id"`
     }
     ListFollowResp {
         Status
@@ -20,7 +20,7 @@ type(
     }
     ListFollowerReq {
         Token
-        userId string `form:"user_id"`
+        userId int64 `form:"user_id"`
     }
     ListFollowerResp {
         Status
@@ -28,7 +28,7 @@ type(
     }
     ListFriendReq {
         Token
-        userId string `form:"user_id"`
+        userId int64 `form:"user_id"`
     }
     ListFriendResp {
         Status

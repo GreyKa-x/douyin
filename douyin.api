@@ -8,40 +8,57 @@ import "api_types/user.api"
 
 @server(
 	group: user
+	prefix: douyin/user
 )
 service douyin {
 	@handler Register
-	post /user/register (RegisterReq) returns (RegisterResp)
+	post /register (RegisterReq) returns (RegisterResp)
 	@handler Login
-	post /user/login (LoginReq) returns (LoginResp)
+	post /login (LoginReq) returns (LoginResp)
 	@handler GetUser
-	get /user (GetUserReq) returns (GetUserResp)
+	get / (GetUserReq) returns (GetUserResp)
 }
 
 @server(
 	group: video
+	prefix: douyin/feed
 )
 service douyin {
 	@handler ListVideo
-	get /feed (ListVideoReq) returns (ListVideoResp)
+	get / (ListVideoReq) returns (ListVideoResp)
+}
+
+@server(
+	group: video
+	prefix: douyin/publish
+)
+service douyin {
 	@handler UploadVideo
-	post /publish/action (UploadVideoReq) returns (UploadVideoResp)
+	post /action (UploadVideoReq) returns (UploadVideoResp)
 	@handler ListVideoByUser
-	get /publish/list (ListVideoByUserReq) returns (ListVideoByUserResp)
+	get /list (ListVideoByUserReq) returns (ListVideoByUserResp)
 }
 
 @server(
 	group: interaction
+	prefix: douyin/favorite
 )
 service douyin {
 	@handler Favorite
-	post /favorite/action (FavoriteReq) returns (FavoriteResp)
+	post /action (FavoriteReq) returns (FavoriteResp)
 	@handler ListFavorite
-	get /favorite/list (ListFavoriteReq) returns (ListFavoriteResp)
+	get /list (ListFavoriteReq) returns (ListFavoriteResp)
+}
+
+@server(
+	group: interaction
+	prefix: douyin/comment
+)
+service douyin {
 	@handler Comment
-	post /comment/action (CommentReq) returns (CommentResp)
+	post /action (CommentReq) returns (CommentResp)
 	@handler ListComment
-	get /comment/list (ListCommentReq) returns (ListCommentResp)
+	get /list (ListCommentReq) returns (ListCommentResp)
 }
 
 @server(

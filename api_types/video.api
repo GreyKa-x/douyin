@@ -3,8 +3,8 @@ syntax = "v1"
 import "api_types/common.api"
 type(
     ListVideoReq {
-        Token
-        latestTime string `form:"latest_time"`
+        token string `form:"token,optional"`
+        latestTime int64 `form:"latest_time,optional"`
     }
     ListVideoResp {
         Status
@@ -21,7 +21,7 @@ type(
     }
     ListVideoByUserReq {
         Token
-        userId string `form:"user_id"`
+        userId int64 `form:"user_id"`
     }
     ListVideoByUserResp {
         Status

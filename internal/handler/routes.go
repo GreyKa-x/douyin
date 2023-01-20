@@ -19,65 +19,80 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/user/register",
+				Path:    "/register",
 				Handler: user.RegisterHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/user/login",
+				Path:    "/login",
 				Handler: user.LoginHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/user",
+				Path:    "/",
 				Handler: user.GetUserHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/douyin/user"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodGet,
-				Path:    "/feed",
+				Path:    "/",
 				Handler: video.ListVideoHandler(serverCtx),
 			},
+		},
+		rest.WithPrefix("/douyin/feed"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/publish/action",
+				Path:    "/action",
 				Handler: video.UploadVideoHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/publish/list",
+				Path:    "/list",
 				Handler: video.ListVideoByUserHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/douyin/publish"),
 	)
 
 	server.AddRoutes(
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/favorite/action",
+				Path:    "/action",
 				Handler: interaction.FavoriteHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/favorite/list",
+				Path:    "/list",
 				Handler: interaction.ListFavoriteHandler(serverCtx),
 			},
+		},
+		rest.WithPrefix("/douyin/favorite"),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/comment/action",
+				Path:    "/action",
 				Handler: interaction.CommentHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/comment/list",
+				Path:    "/list",
 				Handler: interaction.ListCommentHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/douyin/comment"),
 	)
 
 	server.AddRoutes(

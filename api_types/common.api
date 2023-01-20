@@ -4,12 +4,12 @@ type (
     User {
         id int64 `json:"id"`
         name string `json:"name"`
-        followCount int64 `json:"follow_count"`
-        followerCount int64 `json:"follower_count"`
+        followCount int64 `json:"follow_count,optional"`
+        followerCount int64 `json:"follower_count,optional"`
         isFollow bool `json:"is_follow"`
     }
     Status {
-        statusCode int64 `json:"status_code"`
+        statusCode int32 `json:"status_code"`
         statusMsg string `json:"status_msg,optional"`
     }
     Token {

@@ -4,15 +4,15 @@ import "api_types/common.api"
 type (
     FavoriteReq {
         Token
-        videoId string `form:"video_id"`
-        actionType string `form:"action_type"`
+        videoId int64 `form:"video_id"`
+        actionType int32 `form:"action_type"`
     }
     FavoriteResp {
         Status
     }
     ListFavoriteReq {
         Token
-        userId string `form:"user_id"`
+        userId int64 `form:"user_id"`
     }
     ListFavoriteResp {
         Status
@@ -20,18 +20,18 @@ type (
     }
     CommentReq {
         Token
-        videoId string `form:"video_id"`
-        actionType string `form:"action_type"`
-        commentText string `form:"comment_text"`
-        comment_id string `form:"comment_id"`
+        videoId int64 `form:"video_id"`
+        actionType int32 `form:"action_type"`
+        commentText string `form:"comment_text,optional"`
+        commentId int64 `form:"comment_id,optional"`
     }
     CommentResp {
         Status
-        comment Comment `json:"comment"`
+        comment Comment `json:"comment,optional"`
     }
     ListCommentReq {
         Token
-        videoId string `form:"video_id"`
+        videoId int64 `form:"video_id"`
     }
     ListCommentResp {
         Status
